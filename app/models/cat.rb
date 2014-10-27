@@ -6,4 +6,6 @@ class Cat < ActiveRecord::Base
   def neutered
     super == 'true' or super == true
   end
+
+  scope :by_family, lambda { |fname| where("details -> 'family' = ?", fname) }
 end
